@@ -28,6 +28,17 @@
           <li>途中式の解釈が楽になったので、小数の入力にも対応した</li>
         </ul>
       </li>
+      <li class="demo">
+        <router-link to="/calc3">
+          シンプルな電卓の改良＋丸め誤差への対応
+        </router-link>
+        <ul class="desc">
+          <li>
+            <code>1.1 * 1.1</code> の計算結果が
+            <code>1.2100000000000002</code> のようになってしまう現象に対応する
+          </li>
+        </ul>
+      </li>
     </ul>
   </div>
 </template>

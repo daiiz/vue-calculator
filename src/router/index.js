@@ -4,6 +4,7 @@ import Main from "@/components/Main";
 
 import Calculator1 from "@/components/Calculator1";
 import Calculator2 from "@/components/Calculator2";
+import Calculator3 from "@/components/Calculator3";
 
 Vue.use(Router);
 
@@ -23,6 +24,11 @@ export default new Router({
       path: "/calc2",
       name: "Calc2",
       component: Calculator2
+    },
+    {
+      path: "/calc3",
+      name: "Calc3",
+      component: Calculator3
     }
   ]
 });
