@@ -2,7 +2,8 @@
 
 @font-face {
   font-family: "D7MBI";
-  src: url("/static/fonts/DSEG7Modern-BoldItalic.woff") format("woff");
+  src: url("https://daiiz-paprika.appspot.com/doc/2475ee5444416093bacf730499a84004")
+    format("woff");
 }
 
 li.demo {
