@@ -33,11 +33,13 @@ a:hover {
 .calc-title {
   font-size: 2rem;
   margin-bottom: 1rem;
+  cursor: pointer;
+  user-select: none;
 }
 
 .calc {
   width: 100%;
-  max-width: 400px;
+  max-width: 450px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -63,7 +65,7 @@ a:hover {
   font-family: "D7MBI";
   font-size: 1.5rem;
   margin: 0;
-  padding: 4px 6px;
+  padding: 8px 6px;
 }
 
 .calc-row {
@@ -79,4 +81,5 @@ button {
   font-size: 1.5rem;
   color: #555;
   width: 25%;
+  cursor: pointer;
 }
