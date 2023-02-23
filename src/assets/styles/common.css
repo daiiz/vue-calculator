@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "D7MBI";
+  src: url("/static/fonts/DSEG7Modern-BoldItalic.woff") format("woff");
+}
+
 .desc {
   font-size: 0.96rem;
   color: #333;
@@ -54,6 +59,24 @@ a:hover {
 }
 
 .calc-expr input {
+  text-align: right;
+  font-family: "D7MBI";
   font-size: 1.5rem;
   margin: 0;
+  padding: 4px 6px;
+}
+
+.calc-row {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+button {
+  font-family: monospace;
+  font-size: 1.5rem;
+  color: #555;
+  width: 25%;
 }
