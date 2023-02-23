@@ -45,7 +45,7 @@ export default {
         this.expr = `${calc(this.expr)}`;
         return;
       }
-      this.expr = this.expr + v;
+      this.expr = `${this.expr}${v}`;
     }
   }
 };
