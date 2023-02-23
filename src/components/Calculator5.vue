@@ -1,4 +1,9 @@
 <script>
+/** BNF記法での四則演算の定義
+ *
+ * expr := term { ("+" | "-") term }
+ **/
+
 const calc = expr => {
   if (!expr) {
     return "";
