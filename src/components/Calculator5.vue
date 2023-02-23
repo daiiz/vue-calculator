@@ -74,7 +74,7 @@ export default {
         <button @click="() => click('(')">(</button>
         <button @click="() => click(')')">)</button>
         <div class="space"></div>
-        <div class="space"></div>
+        <button @click="clear" style="color: #D84D57">C</button>
       </div>
     </div>
 
