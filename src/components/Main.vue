@@ -106,11 +106,45 @@
     <h2>Advanced</h2>
     <ul>
       <li class="demo">
-        <router-link to="/calc4"
+        <router-link to="/calc5"
           >括弧つき四則演算ができる電卓 (本気)</router-link
         >
         <ul class="desc">
-          <li>大学レベルです</li>
+          <li>
+            <b
+              >大学レベルです。本気で電卓に臨むとここまでできるぞ！という一例です。理解できなくても全く問題ありません。</b
+            >
+          </li>
+          <li>
+            四則演算の<b>構文解析</b>を行い、小さく分割された数式のパーツごとに再帰的に計算していく
+          </li>
+          <li>
+            まずは、四則演算の計算の優先順序などを反映させた解析ルールを定義する。これは
+            <a
+              href="https://ja.wikipedia.org/wiki/バッカス・ナウア記法"
+              target="_blank"
+              rel="noopener noreferrer"
+              ><b>BNF</b> (バッカス・ナウア記法)</a
+            >
+            などと呼ばれる。今回の定義の詳細はソースコードに記した。
+          </li>
+          <li>
+            定義された各パーツを実装していく。部分的に答えを求めて最終的に全てを組み上げる方法で計算される。正しくコードを書けば、乗除や括弧つきの部分の解決が優先されるような自然な数式計算ができる。
+          </li>
+          <li>
+            <b>学習ポイント</b>: 検索してみよう: 構文解析, BNF, EBNF, 再帰
+            <br />
+            <a
+              href="https://www.google.com/search?q=再帰"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                width="500"
+                src="https://gyazo.com/196e2249eafa56cff5a97d51a4473a77/thumb/1200"
+              />
+            </a>
+          </li>
         </ul>
       </li>
     </ul>

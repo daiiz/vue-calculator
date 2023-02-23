@@ -16,6 +16,10 @@ li.demo {
   color: #333;
 }
 
+.desc li {
+  line-height: 1.6;
+}
+
 a {
   color: #073e76;
   text-decoration: none;
