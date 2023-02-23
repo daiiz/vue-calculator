@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h2>Basic</h2>
     <ul>
       <li class="demo">
         <router-link to="/calc1">シンプルな電卓</router-link>
@@ -61,6 +62,51 @@
           <li>
             <b>学習ポイント</b>: 第三者が提供するnpmライブラリを導入できる
           </li>
+        </ul>
+      </li>
+    </ul>
+    <h2>Standard</h2>
+    <ul>
+      <li class="demo">
+        <router-link to="/calc4"
+          >括弧つき四則演算ができる電卓 (気楽)</router-link
+        >
+        <ul class="desc">
+          <li>逐次計算方式を卒業する</li>
+          <li>
+            途中式をすべて文字列として保持しておき、「=」が入力された時点で計算する
+          </li>
+          <li>
+            まずは雰囲気を掴むために、非推奨な手法ではあるが
+            <code>new Function()</code>
+            を用いて、関数内部に与えた文字列をそのまま評価させる方法で実装してみる
+          </li>
+          <li>
+            類似手法として、もっと非推奨ですが、<code>eval()</code>
+            関数を用いるアイデアもある
+          </li>
+          <li>
+            <a
+              href="https://developer.mozilla.org/ja/docs/orphaned/Web"
+              target="_blank"
+              rel="noopener noreferrer"
+              >MDN</a
+            >などのドキュメントで、なぜこれらが非推奨なのかを調べてみよう。また、両者の違いはなんだろうか？
+          </li>
+          <li>
+            <b>学習ポイント</b>: MDNのドキュメントでJavaScriptの仕様を調査できる
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <h2>Advanced</h2>
+    <ul>
+      <li class="demo">
+        <router-link to="/calc4"
+          >括弧つき四則演算ができる電卓 (本気)</router-link
+        >
+        <ul class="desc">
+          <li>大学レベルです</li>
         </ul>
       </li>
     </ul>
