@@ -109,7 +109,7 @@ export default {
 
 <template>
   <div class="calc-container">
-    <div class="calc-title" @click="clear">シンプルな電卓</div>
+    <div class="calc-title" @click="clear">シンプルな電卓の改良</div>
     <div class="calc">
       <div class="calc-expr">
         <input readonly placeholder="0" :value="val" />
@@ -143,7 +143,7 @@ export default {
 
     <div>
       <a
-        href="https://github.com/daiiz/vue-calculator/blob/master/src/components/Calculator1.vue"
+        href="https://github.com/daiiz/vue-calculator/blob/master/src/components/Calculator2.vue"
         target="_blank"
         rel="noopener noreferrer"
         class="ref"
@@ -154,4 +154,9 @@ export default {
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.calc {
+  border: 2px solid rgb(118, 64, 7);
+  background-color: rgba(118, 64, 7, 0.2);
+}
+</style>

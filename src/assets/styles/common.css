@@ -94,3 +94,10 @@ button {
 code {
   font-family: monospace;
 }
+
+a.ref {
+  display: block;
+  font-size: 0.88rem;
+  filter: saturate(0.6);
+  margin-top: 16px;
+}
