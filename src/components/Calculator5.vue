@@ -54,7 +54,7 @@ export default {
 <template>
   <div class="calc-container">
     <div class="calc-title" @click="() => clear()">
-      括弧つき四則演算ができる電卓 (気楽)
+      括弧つき四則演算ができる電卓 (本気)
     </div>
     <div class="calc">
       <div class="calc-expr">
@@ -69,7 +69,7 @@ export default {
 
     <div>
       <a
-        href="https://github.com/daiiz/vue-calculator/blob/master/src/components/Calculator4.vue"
+        href="https://github.com/daiiz/vue-calculator/blob/master/src/components/Calculator5.vue"
         target="_blank"
         rel="noopener noreferrer"
         class="ref"
@@ -82,7 +82,7 @@ export default {
 
 <style scoped>
 .calc {
-  border: 2px solid rgb(114, 7, 118);
-  background-color: rgba(114, 7, 118, 0.2);
+  border: 2px solid rgb(64, 118, 7);
+  background-color: rgba(64, 118, 7, 0.2);
 }
 </style>
