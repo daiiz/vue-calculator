@@ -1,42 +1,9 @@
 <script>
 const opPattern = /[\+\-\*\/]/;
 
-const calc = expr => {
-  const toks = expr
-    .split(new RegExp("(" + opPattern.source + ")"))
-    .map(v => v.trim())
-    .filter(v => !!v);
-
-  let op, a, b;
-  if (toks.length === 3) {
-    // 例: toks: ["1", "+", "2"]
-    op = toks[1];
-    a = Number(toks[0]);
-    b = Number(toks[2]);
-  } else if (toks.length === 4) {
-    const headChar = toks[0];
-    if (opPattern.test(headChar)) {
-      // 例: toks: ["-", "1", "+", "2"]
-      op = toks[2];
-      a = Number(toks[0] + toks[1]);
-      b = Number(toks[3]);
-    } else {
-      // 例: toks: ["6", "*", "-", "3"]
-      op = toks[1];
-      a = Number(toks[0]);
-      b = Number(toks[2] + toks[3]);
-    }
-  } else if (toks.length === 5) {
-    // 例: toks: ["-", "6", "/", "-", "3"]
-    op = toks[2];
-    a = Number(toks[0] + toks[1]);
-    b = Number(toks[3] + toks[4]);
-  }
-
-  if (a === undefined || b === undefined || op === undefined) {
-    return expr;
-  }
-
+const calc = (leftNum, op, rightNum) => {
+  const a = Number(leftNum);
+  const b = Number(rightNum);
   switch (op) {
     case "+":
       return a + b;
@@ -47,28 +14,85 @@ const calc = expr => {
     case "/":
       return a / b;
   }
-
-  return expr;
+  throw new Error("Invalid op: " + op);
 };
 
 export default {
-  name: "Calculator1",
+  name: "Calculator2",
 
   data() {
     return {
-      toks: []
+      toks: ["", "", ""]
     };
   },
 
+  computed: {
+    expr: {
+      get() {
+        return this.toks.join("");
+      }
+    }
+  },
+
   methods: {
-    clear() {
-      this.toks.length = 0;
+    getCurrentTok() {
+      const arr = this.toks.filter(v => !!v);
+      if (arr.length === 0) {
+        return ["", 0];
+      }
+      const cTokIdx = arr.length - 1;
+      const cTok = arr[cTokIdx];
+      return [cTok, cTokIdx];
+    },
+    setToks(leftNum = "", op = "", rightNum = "") {
+      this.$set(this.toks, 0, leftNum);
+      this.$set(this.toks, 1, op);
+      this.$set(this.toks, 2, rightNum);
     },
     click(v) {
       const headTok = this.toks[0];
-
       if (["NaN", "Infinity", "-Infinity"].includes(headTok)) {
-        this.toks.length = 0;
+        this.setToks();
+      }
+
+      const [tok, idx] = this.getCurrentTok();
+      if (opPattern.test(v) || v === "=") {
+        if (idx === 2) {
+          // 計算する
+          const nextLeftNum = calc(this.toks[0], this.toks[1], this.toks[2]);
+          const nextOp = v === "=" ? "" : v;
+          this.setToks(`${nextLeftNum}`, nextOp, "");
+          return;
+        }
+        if (v === "=") {
+          return;
+        }
+        if (v === "-") {
+          // rightNumとして負数を与える
+          if (idx === 0 && tok === "") {
+            this.$set(this.toks, idx, v);
+            return;
+          } else if (
+            idx === 1 &&
+            !["+", "-"].includes(tok) &&
+            opPattern.test(tok)
+          ) {
+            this.$set(this.toks, idx + 1, v);
+            return;
+          }
+        }
+        if (idx === 1) {
+          // 演算子を上書きする
+          this.$set(this.toks, idx, v);
+        } else if (idx === 0 && /[0-9]$/.test(tok)) {
+          // 演算子としての「-」を与える
+          this.$set(this.toks, idx + 1, v);
+        }
+      } else {
+        // 文字列結合する
+        const tIdx = idx === 1 ? idx + 1 : idx;
+        const tVal = idx === 1 ? `${v}` : `${tok}${v}`;
+        this.$set(this.toks, tIdx, tVal.replace(/^00+/, "0"));
       }
     }
   }
@@ -77,10 +101,12 @@ export default {
 
 <template>
   <div class="calc-container">
-    <div class="calc-title" @click="clear">シンプルな電卓の改良</div>
+    <div class="calc-title" @click="() => setToks()">
+      シンプルな電卓の改良
+    </div>
     <div class="calc">
       <div class="calc-expr">
-        <input readonly placeholder="0" :value="toks.join('')" />
+        <input readonly placeholder="0" v-model="expr" />
       </div>
       <div class="calc-row">
         <button @click="() => click(1)">1</button>
