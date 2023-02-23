@@ -89,6 +89,12 @@ export default {
           this.$set(this.toks, idx + 1, v);
         }
       } else {
+        if (v === ".") {
+          // 小数点の入力を制限する
+          if ((idx !== 0 && idx !== 2) || tok.includes(".")) {
+            return;
+          }
+        }
         // 文字列結合する
         const tIdx = idx === 1 ? idx + 1 : idx;
         const tVal = idx === 1 ? `${v}` : `${tok}${v}`;
@@ -127,9 +133,8 @@ export default {
         <button @click="() => click('*')">*</button>
       </div>
       <div class="calc-row">
-        <button @click="() => click(0)" style="width: calc(50% + 8px)">
-          0
-        </button>
+        <button @click="() => click(0)">0</button>
+        <button @click="() => click('.')">.</button>
         <button @click="() => click('=')">=</button>
         <button @click="() => click('/')">/</button>
       </div>
