@@ -123,7 +123,7 @@ export default {
       <div class="calc-expr">
         <input readonly placeholder="0" v-model="expr" />
       </div>
-      <div v-for="row in buttons" :key="row" class="calc-row">
+      <div v-for="(row, idx) in buttons" :key="idx" class="calc-row">
         <button v-for="v in row" :key="v" @click="() => click(v)">
           {{ v }}
         </button>
