@@ -56,51 +56,19 @@ export default {
 
   data() {
     return {
-      val: ""
+      toks: []
     };
   },
 
   methods: {
     clear() {
-      this.val = "";
+      this.toks.length = 0;
     },
     click(v) {
-      if (["NaN", "Infinity", "-Infinity"].includes(this.val)) {
-        this.val = "";
-      }
+      const headTok = this.toks[0];
 
-      if (this.val === "") {
-        if (opPattern.test(v) && v !== "-") {
-          return;
-        }
-      }
-
-      if (v === 0 && ["", "0"].includes(this.val)) {
-        this.val = "0";
-      } else if (v === "=") {
-        // 計算する
-        this.val = `${calc(this.val)}`;
-      } else if (opPattern.test(v)) {
-        const lastChar = this.val[this.val.length - 1];
-        if (opPattern.test(lastChar)) {
-          if (v === "-" && !["+", "-"].includes(lastChar)) {
-            // 文字列結合する
-            this.val += `${v}`;
-          } else {
-            // 演算子を連続で入力させない
-            return;
-          }
-        } else if (opPattern.test(this.val)) {
-          // 計算する
-          this.val = `${calc(this.val)}${v}`;
-        } else {
-          // 文字列結合する
-          this.val += `${v}`;
-        }
-      } else {
-        // 文字列結合する
-        this.val += `${v}`;
-        this.val = this.val.replace(/^00+/, "0");
+      if (["NaN", "Infinity", "-Infinity"].includes(headTok)) {
+        this.toks.length = 0;
       }
     }
   }
@@ -112,7 +80,7 @@ export default {
     <div class="calc-title" @click="clear">シンプルな電卓の改良</div>
     <div class="calc">
       <div class="calc-expr">
-        <input readonly placeholder="0" :value="val" />
+        <input readonly placeholder="0" :value="toks.join('')" />
       </div>
       <div class="calc-row">
         <button @click="() => click(1)">1</button>
