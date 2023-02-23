@@ -82,4 +82,5 @@ button {
   color: #555;
   width: 25%;
   cursor: pointer;
+  user-select: none;
 }

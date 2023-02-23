@@ -9,13 +9,28 @@ const calc = expr => {
 
   let op, a, b;
   if (toks.length === 3) {
+    // 例: toks: ["1", "+", "2"]
     op = toks[1];
     a = Number(toks[0]);
     b = Number(toks[2]);
   } else if (toks.length === 4) {
+    const headChar = toks[0];
+    if (opPattern.test(headChar)) {
+      // 例: toks: ["-", "1", "+", "2"]
+      op = toks[2];
+      a = Number(toks[0] + toks[1]);
+      b = Number(toks[3]);
+    } else {
+      // 例: toks: ["6", "*", "-", "3"]
+      op = toks[1];
+      a = Number(toks[0]);
+      b = Number(toks[2] + toks[3]);
+    }
+  } else if (toks.length === 5) {
+    // 例: toks: ["-", "6", "/", "-", "3"]
     op = toks[2];
     a = Number(toks[0] + toks[1]);
-    b = Number(toks[3]);
+    b = Number(toks[3] + toks[4]);
   }
 
   if (a === undefined || b === undefined || op === undefined) {
@@ -50,12 +65,12 @@ export default {
       this.val = "";
     },
     click(v) {
-      if (this.val === "Infinity") {
+      if (["NaN", "Infinity", "-Infinity"].includes(this.val)) {
         this.val = "";
       }
 
       if (this.val === "") {
-        if (opPattern.test(v)) {
+        if (opPattern.test(v) && v !== "-") {
           return;
         }
       }
@@ -68,8 +83,13 @@ export default {
       } else if (opPattern.test(v)) {
         const lastChar = this.val[this.val.length - 1];
         if (opPattern.test(lastChar)) {
-          // 演算子を連続で入力させない
-          return;
+          if (v === "-" && !["+", "-"].includes(lastChar)) {
+            // 文字列結合する
+            this.val += `${v}`;
+          } else {
+            // 演算子を連続で入力させない
+            return;
+          }
         } else if (opPattern.test(this.val)) {
           // 計算する
           this.val = `${calc(this.val)}${v}`;
