@@ -70,6 +70,12 @@ export default {
           {{ v }}
         </button>
       </div>
+      <div class="calc-row">
+        <button @click="() => click('(')">(</button>
+        <button @click="() => click(')')">)</button>
+        <div class="space"></div>
+        <div class="space"></div>
+      </div>
     </div>
 
     <div>

@@ -89,7 +89,8 @@ a:hover {
   margin-bottom: 4px;
 }
 
-button {
+button,
+.space {
   font-family: monospace;
   font-size: 1.5rem;
   color: #555;
