@@ -7,9 +7,11 @@
 
 li.demo {
   margin-bottom: 16px;
+  font-size: 1.04rem;
 }
 
 .desc {
+  margin-top: 4px;
   font-size: 0.96rem;
   color: #333;
 }
