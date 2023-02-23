@@ -72,9 +72,7 @@
     <h2>Standard</h2>
     <ul>
       <li class="demo">
-        <router-link to="/calc4"
-          >括弧つき四則演算ができる電卓 (気楽)</router-link
-        >
+        <router-link to="/calc4">四則演算ができる電卓 (気楽)</router-link>
         <ul class="desc">
           <li>逐次計算方式を卒業する</li>
           <li>
