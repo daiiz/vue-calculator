@@ -25,6 +25,12 @@ export default {
 
   data() {
     return {
+      buttons: [
+        [1, 2, 3, "+"],
+        [4, 5, 6, "-"],
+        [7, 8, 9, "*"],
+        [0, ".", "=", "/"]
+      ],
       toks: ["", "", ""]
     };
   },
@@ -117,29 +123,10 @@ export default {
       <div class="calc-expr">
         <input readonly placeholder="0" v-model="expr" />
       </div>
-      <div class="calc-row">
-        <button @click="() => click(1)">1</button>
-        <button @click="() => click(2)">2</button>
-        <button @click="() => click(3)">3</button>
-        <button @click="() => click('+')">+</button>
-      </div>
-      <div class="calc-row">
-        <button @click="() => click(4)">4</button>
-        <button @click="() => click(5)">5</button>
-        <button @click="() => click(6)">6</button>
-        <button @click="() => click('-')">-</button>
-      </div>
-      <div class="calc-row">
-        <button @click="() => click(7)">7</button>
-        <button @click="() => click(8)">8</button>
-        <button @click="() => click(9)">9</button>
-        <button @click="() => click('*')">*</button>
-      </div>
-      <div class="calc-row">
-        <button @click="() => click(0)">0</button>
-        <button @click="() => click('.')">.</button>
-        <button @click="() => click('=')">=</button>
-        <button @click="() => click('/')">/</button>
+      <div v-for="row in buttons" :key="row" class="calc-row">
+        <button v-for="v in row" :key="v" @click="() => click(v)">
+          {{ v }}
+        </button>
       </div>
     </div>
 
