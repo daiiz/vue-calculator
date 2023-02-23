@@ -1,19 +1,21 @@
 <!-- ロジックはCalc2と全く同じです -->
 <script>
+const BigNumber = require("bignumber.js");
 const opPattern = /[\+\-\*\/]/;
 
 const calc = (leftNum, op, rightNum) => {
-  const a = Number(leftNum);
-  const b = Number(rightNum);
+  const a = new BigNumber(Number(leftNum));
+  const b = new BigNumber(Number(rightNum));
+  // BigNumber npmを使って計算する
   switch (op) {
     case "+":
-      return a + b;
+      return a.plus(b);
     case "-":
-      return a - b;
+      return a.minus(b);
     case "*":
-      return a * b;
+      return a.multipliedBy(b);
     case "/":
-      return a / b;
+      return a.dividedBy(b);
   }
   throw new Error("Invalid op: " + op);
 };

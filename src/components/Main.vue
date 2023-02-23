@@ -37,6 +37,25 @@
             <code>1.1 * 1.1</code> の計算結果が
             <code>1.2100000000000002</code> のようになってしまう現象に対応する
           </li>
+          <li>
+            参考:
+            <a
+              href="https://typescriptbook.jp/reference/values-types-variables/number/decimal-calculation-error"
+              target="_blank"
+              rel="noopener noreferrer"
+              >小数計算の誤差 - サバイバルTypeScript</a
+            >
+          </li>
+          <li>
+            今回は
+            <a
+              href="https://github.com/MikeMcl/bignumber.js/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >bignumber.js</a
+            >
+            というライブラリを使って解決した
+          </li>
         </ul>
       </li>
     </ul>
