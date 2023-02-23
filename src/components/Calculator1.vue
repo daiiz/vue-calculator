@@ -140,6 +140,17 @@ export default {
         <button @click="() => click('/')">/</button>
       </div>
     </div>
+
+    <div>
+      <a
+        href="https://github.com/daiiz/vue-calculator/blob/master/src/components/Calculator1.vue"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="ref"
+      >
+        ソースコードを見る
+      </a>
+    </div>
   </div>
 </template>
 
