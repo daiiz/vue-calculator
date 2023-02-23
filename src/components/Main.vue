@@ -140,6 +140,7 @@
               rel="noopener noreferrer"
             >
               <img
+                style="max-width: 100%;"
                 width="500"
                 src="https://gyazo.com/196e2249eafa56cff5a97d51a4473a77/thumb/1200"
               />
