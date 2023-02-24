@@ -16,6 +16,9 @@
           >GitHub</a
         >でコードを公開しています。
       </p>
+      <p>
+        他のおもしろい解き方を見つけたら、ぜひPull Requestで自慢してください！！
+      </p>
     </div>
     <h2>Basic</h2>
     <div class="gdesc">
