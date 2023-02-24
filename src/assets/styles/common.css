@@ -17,6 +17,10 @@ li.demo {
   color: #333;
 }
 
+.desc li {
+  line-height: 1.6;
+}
+
 a {
   color: #073e76;
   text-decoration: none;
@@ -85,7 +89,8 @@ a:hover {
   margin-bottom: 4px;
 }
 
-button {
+button,
+.space {
   font-family: monospace;
   font-size: 1.5rem;
   color: #555;

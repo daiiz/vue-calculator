@@ -54,7 +54,7 @@ export default {
 <template>
   <div class="calc-container">
     <div class="calc-title" @click="() => clear()">
-      括弧つき四則演算ができる電卓 (気楽)
+      四則演算ができる電卓 (気楽)
     </div>
     <div class="calc">
       <div class="calc-expr">
