@@ -5,7 +5,7 @@
  * <expr> := <term> [ ("+" | "-") <term> ]*
  * <term> := <factor> [ ("*" | "/") <factor> ]*
  * <factor> := <number> | "(" <expr> ")"
- * <number> := [0-9]+
+ * <number> := [0-9.]+
  **/
 
 const expr = (s, pos) => {
@@ -31,9 +31,6 @@ const term = (s, pos) => {
 };
 
 const factor = (s, pos) => {
-  // if (s[pos.i] >= "0" && s[pos.i] <= "9") {
-  //   return number(s, pos);
-  // }
   if (s[pos.i] === "(") {
     pos.i++;
     const v = expr(s, pos);
@@ -44,10 +41,19 @@ const factor = (s, pos) => {
 };
 
 const number = (s, pos) => {
-  let v = 0;
+  let integer = 0;
+  let decimal = 0;
   while (s[pos.i] >= "0" && s[pos.i] <= "9") {
-    v = v * 10 + Number(s[pos.i++]);
+    integer = integer * 10 + Number(s[pos.i++]);
   }
+  if (s[pos.i] === ".") {
+    pos.i++;
+    while (s[pos.i] >= "0" && s[pos.i] <= "9") {
+      decimal = decimal * 10 + Number(s[pos.i++]);
+    }
+  }
+  const v = Number(`${integer}.${decimal}`);
+  console.log("number:", v);
   return v;
 };
 
