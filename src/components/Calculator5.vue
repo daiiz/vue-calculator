@@ -57,11 +57,13 @@ const number = (s, pos) => {
   }
   if (s[pos.i] === ".") {
     pos.i++;
+    let d = 0.1;
     while (s[pos.i] >= "0" && s[pos.i] <= "9") {
-      decimal = decimal * 10 + Number(s[pos.i++]);
+      decimal += Number(s[pos.i++]) * d;
+      d /= 10;
     }
   }
-  const v = Number(`${integer}.${decimal}`);
+  const v = integer + decimal;
   console.log("number:", v);
   return v;
 };
