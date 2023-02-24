@@ -6,6 +6,11 @@
     format("woff");
 }
 
+body {
+  display: flex;
+  justify-content: center;
+}
+
 li.demo {
   margin-bottom: 16px;
   font-size: 1.04rem;
@@ -26,7 +31,8 @@ a {
   text-decoration: none;
 }
 
-li a {
+li a,
+.title a {
   border-bottom: 1px dashed #073e76;
 }
 
@@ -108,4 +114,21 @@ a.ref {
   font-size: 0.88rem;
   filter: saturate(0.6);
   margin-top: 16px;
+}
+
+.gdesc {
+  margin-left: 16px;
+  padding: 6px 8px;
+  border-radius: 2px;
+  font-size: 0.93rem;
+  color: #111;
+  background-color: #fff6e5;
+  width: fit-content;
+}
+
+footer {
+  margin-top: 32px;
+  font-size: 0.8rem;
+  color: #555;
+  text-align: right;
 }
