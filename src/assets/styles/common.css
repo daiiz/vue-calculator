@@ -36,6 +36,10 @@ li a,
   border-bottom: 1px dashed #073e76;
 }
 
+li .a {
+  font-weight: bold;
+}
+
 a:hover {
   text-decoration: underline;
 }

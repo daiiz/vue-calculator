@@ -23,7 +23,7 @@
     </div>
     <ul>
       <li class="demo">
-        <router-link to="/calc1">シンプルな電卓</router-link>
+        <router-link to="/calc1" class="a">シンプルな電卓</router-link>
         <ul class="desc">
           <li>深く考えずに素直に書いてみる</li>
           <li>
@@ -42,7 +42,7 @@
         </ul>
       </li>
       <li class="demo">
-        <router-link to="/calc2">シンプルな電卓の改良</router-link>
+        <router-link to="/calc2" class="a">シンプルな電卓の改良</router-link>
         <ul class="desc">
           <li>逐次計算する方針は引き継ぐ</li>
           <li>
@@ -55,7 +55,7 @@
         </ul>
       </li>
       <li class="demo">
-        <router-link to="/calc3">
+        <router-link to="/calc3" class="a">
           シンプルな電卓の改良＋丸め誤差への対応
         </router-link>
         <ul class="desc">
@@ -98,7 +98,9 @@
     </div>
     <ul>
       <li class="demo">
-        <router-link to="/calc4">四則演算ができる電卓 (気楽)</router-link>
+        <router-link to="/calc4" class="a"
+          >四則演算ができる電卓 (気楽)</router-link
+        >
         <ul class="desc">
           <li>逐次計算方式を卒業する</li>
           <li>
@@ -134,7 +136,7 @@
     </div>
     <ul>
       <li class="demo">
-        <router-link to="/calc5"
+        <router-link to="/calc5" class="a"
           >括弧つき四則演算ができる電卓 (本気)</router-link
         >
         <ul class="desc">
