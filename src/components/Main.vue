@@ -1,5 +1,16 @@
 <template>
   <div>
+    <div class="title">
+      <h1>電卓づくり 補助教材</h1>
+      <p>
+        電卓を作りながら<a
+          href="https://ja.vuejs.org/"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Vue.js</a
+        >の基本的な使い方を振り返ろう
+      </p>
+    </div>
     <h2>Basic</h2>
     <ul>
       <li class="demo">
@@ -15,7 +26,10 @@
           </li>
           <li>簡単化のため、キーボードでの入力は受け付けない</li>
           <li>実際に書いてみると、意外と考えることが多い</li>
-          <li><b>学習ポイント</b>: Vueのdata, @clickを使いこなせる</li>
+          <li>
+            <b>学習ポイント</b>: Vueのdata, イベントハンドラ @click
+            を使いこなせる
+          </li>
         </ul>
       </li>
       <li class="demo">
@@ -109,9 +123,8 @@
         >
         <ul class="desc">
           <li>
-            <b
-              >大学レベルです。本気で電卓に臨むとここまでできるぞ！という一例です。理解できなくて全く問題ありません。</b
-            >
+            <b>大学レベルです。</b
+            >本気で電卓に臨むとここまでできるぞ！という一例です。Vue.js入門の域を超えていますね！
           </li>
           <li>
             四則演算の<b>構文解析</b>を行い、小さく分割された数式のパーツごとに再帰的に計算していく
