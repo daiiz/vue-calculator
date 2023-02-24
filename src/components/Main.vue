@@ -155,8 +155,8 @@
               rel="noopener noreferrer"
               ><b>BNF</b> (バッカス・ナウア記法)</a
             >
-            などと呼ばれる。今回の定義は次のようになる。数式をexpr, term,
-            factor,
+            などで書き下すことができる。今回の定義は次のようになる。数式をexpr,
+            term, factor,
             numberという4つの構成に分解して考えられる。<code>[]*</code>は0回以上の繰り返し、<code>[]+</code>は1回以上の繰り返しを表す。
             <ul>
               <pre>
