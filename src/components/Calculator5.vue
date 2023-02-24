@@ -1,8 +1,55 @@
 <script>
 /** BNF記法での四則演算の定義
+ * `[]*`は0回以上、`[]+`は1回以上の繰り返しを表す
  *
- * expr := term { ("+" | "-") term }
+ * <expr> := <term> [ ("+" | "-") <term> ]*
+ * <term> := <factor> [ ("*" | "/") <factor> ]*
+ * <factor> := <number> | "(" <expr> ")"
+ * <number> := [0-9]+
  **/
+
+const expr = (s, pos) => {
+  let v = term(s, pos);
+  while (s[pos.i] === "+" || s[pos.i] === "-") {
+    const op = s[pos.i];
+    pos.i++;
+    const v2 = term(s, pos);
+    v = op === "+" ? v + v2 : v - v2;
+  }
+  return v;
+};
+
+const term = (s, pos) => {
+  let v = factor(s, pos);
+  while (s[pos.i] === "*" || s[pos.i] === "/") {
+    const op = s[pos.i];
+    pos.i++;
+    const v2 = factor(s, pos);
+    v = op === "*" ? v * v2 : v / v2;
+  }
+  return v;
+};
+
+const factor = (s, pos) => {
+  // if (s[pos.i] >= "0" && s[pos.i] <= "9") {
+  //   return number(s, pos);
+  // }
+  if (s[pos.i] === "(") {
+    pos.i++;
+    const v = expr(s, pos);
+    pos.i++;
+    return v;
+  }
+  return number(s, pos);
+};
+
+const number = (s, pos) => {
+  let v = 0;
+  while (s[pos.i] >= "0" && s[pos.i] <= "9") {
+    v = v * 10 + Number(s[pos.i++]);
+  }
+  return v;
+};
 
 const calc = expr => {
   if (!expr) {
@@ -47,7 +94,10 @@ export default {
       }
       if (v === "=") {
         // 計算する
-        this.expr = `${calc(this.expr)}`;
+        // 解析位置は参照渡しすることに注意
+        const ans = expr(this.expr, { i: 0 });
+        console.log(this.expr, ans);
+        this.expr = `${ans}`;
         return;
       }
       this.expr = `${this.expr}${v}`;
