@@ -9,7 +9,7 @@
           rel="noopener noreferrer"
           >Vue.js</a
         >の基本的な使い方を振り返ろう！<br />
-        このページ自体もvue-routerを使ったウェブページの一例になっています。<a
+        この資料自体もvue-routerを使ったウェブページの一例になっています。<a
           href="https://github.com/daiiz/vue-calculator"
           target="_blank"
           rel="noopener noreferrer"
@@ -115,7 +115,7 @@
             を用いて、関数内部に与えた文字列をそのまま評価させる方針で実装してみる。計算をブラウザのJavaScriptエンジンに任せることで、四則演算の優先順序などを気にする必要がない。
           </li>
           <li>
-            類似手法として、もっと非推奨だが、<code>eval()</code>
+            類似手法として、より非推奨にはなるが、<code>eval()</code>
             関数を用いるアイデアもある
           </li>
           <li>
