@@ -1,6 +1,7 @@
 <script>
 const BigNumber = require("bignumber.js");
 
+// 本質ここから
 /** BNF記法での四則演算の定義
  * `[]*`は0回以上、`[]+`は1回以上の繰り返しを表す
  *
@@ -64,6 +65,8 @@ const number = (s, pos) => {
   console.log("number:", v);
   return v;
 };
+
+// 本質ここまで
 
 const calc = s => {
   if (!expr) {
