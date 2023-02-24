@@ -8,10 +8,19 @@
           target="_blank"
           rel="noopener noreferrer"
           >Vue.js</a
-        >の基本的な使い方を振り返ろう
+        >の基本的な使い方を振り返ろう！<br />
+        このページ自体もvue-routerを使ったウェブページの一例になっています。<a
+          href="https://github.com/daiiz/vue-calculator"
+          target="_blank"
+          rel="noopener noreferrer"
+          >GitHub</a
+        >でコードを公開しています。
       </p>
     </div>
     <h2>Basic</h2>
+    <div class="gdesc">
+      逐次計算方式の例です。途中式を記憶しておく必要がないので考えやすかったですね！
+    </div>
     <ul>
       <li class="demo">
         <router-link to="/calc1">シンプルな電卓</router-link>
@@ -84,6 +93,9 @@
       </li>
     </ul>
     <h2>Standard</h2>
+    <div class="gdesc">
+      入力式をすべて受け取ってから計算する方針の例です。乗除の優先など、計算順序を意識する必要がでてきて急に難しくなります。StandardとAdvancedの中間くらいでいい具合の難易度の実装はあるだろうか？
+    </div>
     <ul>
       <li class="demo">
         <router-link to="/calc4">四則演算ができる電卓 (気楽)</router-link>
@@ -116,16 +128,16 @@
       </li>
     </ul>
     <h2>Advanced</h2>
+    <div class="gdesc">
+      <b>大学レベルです。</b
+      >本気で電卓に臨むとここまでできるぞ！という一例です。Vue.js入門の域は確実に超えています。考え方こそ難しいですが、実はこれまでの例で最もシンプルに書けているはずです。
+    </div>
     <ul>
       <li class="demo">
         <router-link to="/calc5"
           >括弧つき四則演算ができる電卓 (本気)</router-link
         >
         <ul class="desc">
-          <li>
-            <b>大学レベルです。</b
-            >本気で電卓に臨むとここまでできるぞ！という一例です。Vue.js入門の域を超えていますね。考え方こそ難しいけれど、実はこれまでの例で最もシンプルに書けているはずです。
-          </li>
           <li>
             入力された式の<b>構文解析</b>を行い、小さく分割された数式のパーツごとに再帰的に計算していく手法
           </li>
@@ -138,9 +150,9 @@
               rel="noopener noreferrer"
               ><b>BNF</b> (バッカス・ナウア記法)</a
             >
-            などと呼ばれる。今回の定義はこんな感じになる。数式をexpr, term,
+            などと呼ばれる。今回の定義は次のようになる。数式をexpr, term,
             factor,
-            numberという4つの構成に分割して考える。<code>[]*</code>は0回以上の繰り返し、<code>[]+</code>は1回以上の繰り返しを表す。
+            numberという4つの構成に分解して考えられる。<code>[]*</code>は0回以上の繰り返し、<code>[]+</code>は1回以上の繰り返しを表す。
             <ul>
               <pre>
 expr := term [ ("+" | "-") term ]*
@@ -172,5 +184,8 @@ number := [0-9.]+</pre
         </ul>
       </li>
     </ul>
+    <footer>
+      2023-02-25 だいず
+    </footer>
   </div>
 </template>
