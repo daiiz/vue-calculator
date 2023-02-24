@@ -1,4 +1,6 @@
 <script>
+const BigNumber = require("bignumber.js");
+
 /** BNF記法での四則演算の定義
  * `[]*`は0回以上、`[]+`は1回以上の繰り返しを表す
  *
@@ -14,9 +16,12 @@ const expr = (s, pos) => {
     const op = s[pos.i];
     pos.i++;
     const v2 = term(s, pos);
-    v = op === "+" ? v + v2 : v - v2;
+    v =
+      op === "+"
+        ? new BigNumber(v).plus(new BigNumber(v2))
+        : new BigNumber(v).minus(new BigNumber(v2));
   }
-  return v;
+  return Number(v);
 };
 
 const term = (s, pos) => {
@@ -25,9 +30,12 @@ const term = (s, pos) => {
     const op = s[pos.i];
     pos.i++;
     const v2 = factor(s, pos);
-    v = op === "*" ? v * v2 : v / v2;
+    v =
+      op === "*"
+        ? new BigNumber(v).multipliedBy(new BigNumber(v2))
+        : new BigNumber(v).dividedBy(new BigNumber(v2));
   }
-  return v;
+  return Number(v);
 };
 
 const factor = (s, pos) => {
@@ -57,21 +65,12 @@ const number = (s, pos) => {
   return v;
 };
 
-const calc = expr => {
+const calc = s => {
   if (!expr) {
     return "";
   }
-  const validCharPattern = /^[0-9.+\-*/()]+$/;
-  if (!validCharPattern.test(expr)) {
-    return "NaN";
-  }
-  // https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Function/Function
-  try {
-    return new Function(`return ${expr}`)();
-  } catch (err) {
-    console.error(err);
-    return "NaN";
-  }
+  // 構文解析位置を示すiは参照渡しすることに注意
+  return expr(s, { i: 0 });
 };
 
 export default {
@@ -85,7 +84,7 @@ export default {
         [7, 8, 9, "*"],
         [0, ".", "=", "/"]
       ],
-      expr: "" // 式
+      expr: "1+2*6/(10-7)" // 式
     };
   },
 
@@ -100,9 +99,8 @@ export default {
       }
       if (v === "=") {
         // 計算する
-        // 解析位置は参照渡しすることに注意
-        const ans = expr(this.expr, { i: 0 });
-        console.log(this.expr, ans);
+        const ans = calc(this.expr);
+        console.log(this.expr + "=", ans);
         this.expr = `${ans}`;
         return;
       }
