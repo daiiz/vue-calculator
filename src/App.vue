@@ -20,6 +20,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   margin: 32px 16px;
-  max-width: 800px;
+  width: 800px;
+  max-width: 100%;
 }
 </style>
