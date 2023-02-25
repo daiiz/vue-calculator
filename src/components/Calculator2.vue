@@ -68,15 +68,17 @@ export default {
           return;
         }
         if (v === "-") {
-          // rightNumとして負数を与える
+          // 数値の符号として「-」を処理する
           if (idx === 0 && tok === "") {
             this.$set(this.toks, idx, v);
             return;
           } else if (
+            // leftNumとして負数を与える
             idx === 1 &&
             !["+", "-"].includes(tok) &&
             opPattern.test(tok)
           ) {
+            // rightNumとして負数を与える
             this.$set(this.toks, idx + 1, v);
             return;
           }
@@ -85,7 +87,7 @@ export default {
           // 演算子を上書きする
           this.$set(this.toks, idx, v);
         } else if (idx === 0 && /[0-9]$/.test(tok)) {
-          // 演算子としての「-」を与える
+          // 演算子として「-」を処理する
           this.$set(this.toks, idx + 1, v);
         }
       } else {
